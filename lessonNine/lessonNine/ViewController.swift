@@ -29,8 +29,8 @@ class ViewController: UIViewController {
         downloadTask.resume()
         
         let dataTask = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            let user = try! JSONDecoder().decode(User.self, from: data!)
-            let dictionaty = try! JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:AnyObject]
+            let user = try! JSONDecoder().decode(User.self, from: data!) //парсим данные с помощью decodable
+            let dictionaty = try! JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:AnyObject] //парсим данные в словарь (старый способ)
             let title = dictionaty["title"]
             print("Data: \(data)")
             print(String(data: data!, encoding: .utf8))
